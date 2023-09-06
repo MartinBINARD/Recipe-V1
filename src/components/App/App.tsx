@@ -1,5 +1,5 @@
 import Home from '../Home';
-import Menu from '../Menu';
+// import Menu from '../Menu';
 // import Recipe from '../Recipe';
 // import Error from '../Error';
 
@@ -17,7 +17,7 @@ function App({ loading }: AppProps) {
   }
   return (
     <div className="app">
-      <Menu />
+      {/* <Menu /> */}
       <Home />
       {/* <Recipe /> */}
       {/* <Error /> */}
