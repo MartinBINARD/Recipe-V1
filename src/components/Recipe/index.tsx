@@ -1,5 +1,5 @@
 /* eslint-disable arrow-body-style */
-import { Navigate } from 'react-router-dom';
+import { Navigate, useParams } from 'react-router-dom';
 
 import Page from '../Page';
 import AppHeader from '../AppHeader';
@@ -14,8 +14,10 @@ import { findRecipe } from '../../store/selectors/recipes';
 import './styles.scss';
 
 function Recipe() {
+  const params = useParams();
+
   const recipe = useAppSelector((state) =>
-    findRecipe(state.recipes.list, 'crepes-raffinees')
+    findRecipe(state.recipes.list, params?.slug)
   );
 
   if (!recipe) {

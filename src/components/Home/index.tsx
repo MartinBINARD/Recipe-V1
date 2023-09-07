@@ -1,10 +1,21 @@
+import { useEffect } from 'react';
+import { useAppDispatch, useAppSelector } from '../../hooks/redux';
+
 import Page from '../Page';
 import AppHeader from '../AppHeader';
 import Content from '../Content';
-import { useAppSelector } from '../../hooks/redux';
+
+import { getRecipes } from '../../store/reducers/recipes';
 
 function Home() {
   const recipes = useAppSelector((state) => state.recipes.list);
+
+  const dispatch = useAppDispatch();
+
+  useEffect(() => {
+    dispatch(getRecipes());
+  }, [dispatch]);
+
   return (
     <Page>
       <AppHeader />

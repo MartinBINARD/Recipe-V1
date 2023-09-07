@@ -7,8 +7,6 @@ import Error from '../Error';
 
 import Loading from './Loading';
 
-import data from '../../data';
-
 import './App.scss';
 
 interface AppProps {
@@ -23,13 +21,10 @@ function App({ loading }: AppProps) {
     <div className="app">
       <Menu />
       <Routes>
+        <Route path="/" element={<Home />} />
         <Route path="/recipe/:slug" element={<Recipe />} />
         <Route path="*" element={<Error />} />
       </Routes>
-
-      <Home />
-      {/* <Recipe /> */}
-      {/* <Error /> */}
     </div>
   );
 }
