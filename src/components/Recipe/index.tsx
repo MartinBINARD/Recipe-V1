@@ -14,11 +14,13 @@ import { findRecipe } from '../../store/selectors/recipes';
 import './styles.scss';
 
 function Recipe() {
-  const params = useParams();
+  const { slug } = useParams();
 
-  const recipe = useAppSelector((state) =>
-    findRecipe(state.recipes.list, params?.slug)
-  );
+  // const recipe = useAppSelector((state) =>
+  //   // je dis que dans ma fonction ci-dessous slug est un string
+  //   findRecipe(state.recipes.list, slug as string)
+  // );
+  const recipe = useAppSelector(findRecipe(slug as string));
 
   if (!recipe) {
     return <Navigate to="/error" replace />;
