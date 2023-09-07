@@ -25,4 +25,10 @@ function Content({ title, text, recipes }: ContentProps) {
   );
 }
 
+// quand une propriété est notée comme optionnelle dans l'interface
+// on précise une valeur par défaut
+Content.defaultProps = {
+  recipes: [],
+};
+
 export default Content;

@@ -1,7 +1,9 @@
+import { Route, Routes } from 'react-router-dom';
+
 import Home from '../Home';
-// import Menu from '../Menu';
-// import Recipe from '../Recipe';
-// import Error from '../Error';
+import Menu from '../Menu';
+import Recipe from '../Recipe';
+import Error from '../Error';
 
 import Loading from './Loading';
 
@@ -17,7 +19,12 @@ function App({ loading }: AppProps) {
   }
   return (
     <div className="app">
-      {/* <Menu /> */}
+      <Menu />
+      <Routes>
+        <Route to="/recipe/:slug" element={<Recipe />} />
+        <Route to="*" element={<Error />} />
+      </Routes>
+
       <Home />
       {/* <Recipe /> */}
       {/* <Error /> */}
