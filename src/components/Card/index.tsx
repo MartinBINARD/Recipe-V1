@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import { Recipe } from '../../@types/recipe';
 import './styles.scss';
 
@@ -8,9 +9,9 @@ function Card({ thumbnail, title, difficulty, slug }: Recipe) {
       <div className="card-content">
         <h2 className="card-title">{title}</h2>
         <p className="card-desc">Difficulté : {difficulty}</p>
-        <a href={`/recipe/${slug}`} className="card-link">
+        <Link to={`/recipe/${slug}`} className="card-link">
           Voir la recette
-        </a>
+        </Link>
       </div>
     </article>
   );
