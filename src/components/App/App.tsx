@@ -1,4 +1,8 @@
-import { Route, Routes } from 'react-router-dom';
+import { useEffect } from 'react';
+import { Route, Routes, useLocation } from 'react-router-dom';
+
+import { useAppDispatch, useAppSelector } from '../../hooks/redux';
+import { getRecipes } from '../../store/reducers/recipes';
 
 import Home from '../Home';
 import Menu from '../Menu';
@@ -9,11 +13,20 @@ import Loading from './Loading';
 
 import './App.scss';
 
-interface AppProps {
-  loading?: boolean;
-}
+function App() {
+  const dispatch = useAppDispatch();
+  const location = useLocation();
 
-function App({ loading }: AppProps) {
+  const loading = useAppSelector((state) => state.recipes.loading);
+
+  useEffect(() => {
+    dispatch(getRecipes());
+  }, [dispatch]);
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [location]); // à chaque changement de page*
+
   if (loading) {
     return <Loading />;
   }
