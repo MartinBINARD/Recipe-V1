@@ -10,8 +10,8 @@ export const initialState: RecipesState = {
   list: [],
 };
 
-export const getRecipes = createAsyncThunk('recipes/get-recipes', async () => {
-  const { data } = await axios.get(
+export const getRecipes = createAsyncThunk('recipes/fetch', async () => {
+  const { data } = await axios.get<Recipe[]>(
     'https://orecipes-api.onrender.com/api/recipes'
   );
 
@@ -19,13 +19,9 @@ export const getRecipes = createAsyncThunk('recipes/get-recipes', async () => {
 });
 
 const recipesReducer = createReducer(initialState, (builder) => {
-  builder
-    .addCase(getRecipes.fulfilled, (state, action) => {
-      state.list = action.payload;
-    })
-    .addCase(getRecipes.rejected, (state, action) => {
-      console.log('action', action);
-    });
+  builder.addCase(getRecipes.fulfilled, (state, action) => {
+    state.list = action.payload;
+  });
 });
 
 export default recipesReducer;
